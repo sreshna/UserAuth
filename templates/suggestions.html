@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form action="/suggest/" method="get" onsubmit="{% url 'suggest' %}" target="_blank">
+        {% for i in options %}
+        <!--<a href="{% url 'suggest' %}" title="{{ i }}" name="q">{{ i }}</a>-->
+        <ul><input type="submit" value="{{ i }}" name="q"></ul>
+        <!--<input type="hidden" value="{{ i }}" name="q">-->
+        <!--<a href="#" onclick="document.forms['suggestion_form'].submit();" ><li>{{ i }}</li></a>-->
+        {% endfor %}
+    </form>
+</body>
+</html>

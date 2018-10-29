@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+    <form action="/search/" method="get" onsubmit="{% url 'search' %}" target="_blank">
+        <input type="text" name="q">
+        <button type="submit" value="Search">search</button>
+    </form>
+</body>
+</html>
