@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %} Search results {% endblock %}
+{% block content %}
+    <div align="left">
+        <form action="/search/" method="get" onsubmit="{% url 'search' %}" target="_blank">
+            <input type="text" name="q">
+            <button type="submit" value="Search">search</button>
+        </form>
+    </div>
+{% endblock %}

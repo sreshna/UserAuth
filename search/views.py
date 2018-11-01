@@ -1,5 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 import wikipedia as wiki
 
 
@@ -11,18 +12,26 @@ def search_form(request):
 
 def search(request):
     try:
-        result = wiki.page(title=request.GET['q']).html()
+        title = request.GET['q']
+        result = wiki.page(title=title).html()
     except wiki.DisambiguationError as e:
-        return render(request, template_name="suggestions.html", context={"options": e.options})
-        # return HttpResponse(e.options)
-        # s = wiki.random(e.options)
-        # HttpResponse("try searching:")
-        # result = '\n'.join(wiki.search(request.GET['q']))
+        return render(request, template_name="suggestions.html",
+                      context={"options": e.options})
+
     except:
         return HttpResponse('You submitted an empty form')
-    return HttpResponse(result)
+    return render(request, template_name="wikipage.html",
+                  context={"article": {
+                      "title": title,
+                      "html_content": result
+                  }})
 
 
 def suggest(request):
-    result = wiki.WikipediaPage(title=request.GET['q']).html()
-    return HttpResponse(result)
+    title = request.GET['q']
+    result = wiki.WikipediaPage(title=title).html()
+    return render(request, template_name="wikipage.html",
+                  context={"article": {
+                      "title": title,
+                      "html_content": result
+                  }})
