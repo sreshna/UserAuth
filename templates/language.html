@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Languages{% endblock %}
+
+{% block content %}
+    <div>
+        <form method="POST" action = "">{% csrf_token %}
+            <label for="langSelect">Choose lang</label>
+            <select type="text" id="langSelect" name="langSelect">
+                <option selected>English</option>
+                <option>French</option>
+                <option>Hindi</option>
+                <option>Telugu</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Submit!"/>
+        </form>
+    </div>
+{% endblock %}

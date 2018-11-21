@@ -2,9 +2,10 @@
 {% block title %} Search results {% endblock %}
 {% block content %}
     <div align="left">
-        <form action="/search/" method="get" onsubmit="{% url 'search' %}" target="_blank">
-            <input type="text" name="q">
-            <button type="submit" value="Search">search</button>
+        <form action="{% url 'search' %}" method="get" class="search">
+            <input type="text" name="q" id="search_parameter">
+            <button class="search-button" type="button" value="search" id="search_button">search</button>
         </form>
     </div>
+
 {% endblock %}

@@ -1,4 +1,7 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,4 +15,7 @@
         {% block content %}
         {% endblock %}
 </body>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/search.js' %}"></script>
 </html>
