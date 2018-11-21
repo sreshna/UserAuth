@@ -2,6 +2,19 @@
 {% block title %} {{ article.title }} {% endblock %}
 
 {% block content %}
-    {% include "home.html" %}
-    {{ article.html_content | safe }}
+    {% if options %}
+    <div><p>The search results are:</p>
+        {% for i in options %}
+        <form action="{% url 'search' %}" method="get" class="search">
+            <!--<input type="text" name="q" id="search_parameter">-->
+            <!--<input type="hidden" name="q" id="suggest_parameter" value="{{ i }}">-->
+            <ul><button type="button" value="{{ i }}" name="q" id="suggest_button">{{ i }}</button></ul>
+        </form>
+        {% endfor %}
+    </div>
+    {% else %}
+        <div id="article">
+            {{ article.html_content | safe }}
+        </div>
+    {% endif %}
 {% endblock %}

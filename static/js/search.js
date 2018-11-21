@@ -1,3 +1,5 @@
+var $response = $("#uploadResponse")
+
 $(".search-button").click(function(e) {
     e.preventDefault();
     var q = $("#search_parameter").val();
@@ -6,7 +8,10 @@ $(".search-button").click(function(e) {
     type: "GET",
     url: '/search/',
     data: {"q": q},
-    success: function() {
+    success: function(response) {
+    console.log(response);
+    $response.empty();
+    $response.append(response);
 //      $('#contact_form').html("<div id='message'></div>");
       }
     })
@@ -18,9 +23,11 @@ $("#suggest_button").click(function(e) {
     console.log(q);
       $.ajax({
     type: "GET",
-    url: '/search/',
+    url: '/suggest/',
     data: {"q": q},
-    success: function() {
+    success: function(response) {
+    $response.empty();
+    $response.append(response);
 //      $('#contact_form').html("<div id='message'></div>");
       }
     })

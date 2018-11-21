@@ -8,38 +8,14 @@
     {% if user.is_authenticated %}
         <div align="right">Hi {{ user.username }}!</div>
         <div align="right"><p><a href="{% url 'logout' %}">Logout</a></p></div>
-
     {% else %}
         <a href="{% url 'login' %}" >login</a><br>
     {% endif %}
-
-
-
-
-    {% if options %}
-    <div><p>The search results are:</p>
-        {% for i in options %}
-        <form action="{% url 'search' %}" method="get" class="search">
-            <!--<input type="text" name="q" id="search_parameter">-->
-        <!--<input type="hidden" name="q" id="suggest_parameter" value="{{ i }}">-->
-        <ul><button type="button" value="{{ i }}" name="q" id="suggest_button"></button></ul>
-        {% endfor %}
-        </form>
-    </div>
-    {% else %}
-        <div id="article">
-            {{ article.html_content | safe }}
-        </div>
-    {% endif %}
-
-
-
-
-
     <div align="left">
         <form action="{% url 'search' %}" method="get" class="search">
             <input type="text" name="q" id="search_parameter">
             <button class="search-button" type="button" value="search" id="search_button">search</button>
         </form>
     </div>
+    <div id="uploadResponse"></div>
 {% endblock %}
