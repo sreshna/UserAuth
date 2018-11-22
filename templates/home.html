@@ -9,7 +9,7 @@
         <div align="right">Hi {{ user.username }}!</div>
         <div align="right"><p><a href="{% url 'logout' %}">Logout</a></p></div>
     {% else %}
-        <a href="{% url 'login' %}" >login</a><br>
+        <div align="right"><p><a href="{% url 'login' %}" >login</a></p></div><br>
     {% endif %}
     <div align="left">
         <form action="{% url 'search' %}" method="get" class="search">
@@ -17,5 +17,10 @@
             <button class="search-button" type="button" value="search" id="search_button">search</button>
         </form>
     </div>
-    <div id="uploadResponse"></div>
+
+    <!-- Load ajax Response here -->
+    <div id="uploadResponse">
+        <!-- Response from ajax request -->
+    </div>
+
 {% endblock %}

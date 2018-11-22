@@ -5,10 +5,8 @@
     {% if options %}
     <div><p>The search results are:</p>
         {% for i in options %}
-        <form action="{% url 'search' %}" method="get" class="search">
-            <!--<input type="text" name="q" id="search_parameter">-->
-            <!--<input type="hidden" name="q" id="suggest_parameter" value="{{ i }}">-->
-            <ul><button type="button" value="{{ i }}" name="q" id="suggest_button">{{ i }}</button></ul>
+        <form action="{% url 'search' %}" method="get" class="suggest">
+            <ul><input type="submit" value="{{ i }}" class="suggestSubmit"></ul>
         </form>
         {% endfor %}
     </div>
